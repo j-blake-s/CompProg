@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include "C:\Users\Blake\Desktop\Gituhb\CompProg\include\slink.h"
+#include "..\..\..\include\slink.h"
 
 using std::string;
 
