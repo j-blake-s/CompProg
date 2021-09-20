@@ -17,13 +17,15 @@ void sclose(std::ostream&);
 
 //** Definitions
 bool sopen(std::istream &is, std::string fn) {
+
+    //? Make sure there isn't a stream already opened
     if (ifs != NULL) {
         std::cerr << "Close streams before opening more" << std::endl;
         return false;
     } else {
         ifs = new std::fstream(fn,std::fstream::in);
 
-        //* Check that file opened correctly
+        //? Check that file opened correctly
         if (ifs -> is_open()) {
             inbuf = is.rdbuf();
             is.rdbuf(ifs -> rdbuf());
@@ -38,13 +40,15 @@ bool sopen(std::istream &is, std::string fn) {
 }
 
 bool sopen(std::ostream &os, std::string fn) {
+
+    //? Make sure there isnt another stream opened
     if (ofs != NULL) {
         std::cerr << "Close streams before opening more" << std::endl;
         return false;
     } else {
         ofs = new std::fstream(fn,std::fstream::out);
 
-        //* Check that file opened correctly
+        //? Check that file opened correctly
         if (ofs -> is_open()) {
             outbuf = os.rdbuf();
             os.rdbuf(ofs -> rdbuf());
