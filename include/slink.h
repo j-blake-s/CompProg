@@ -10,16 +10,16 @@ std::fstream *ifs = NULL;
 std::fstream *ofs = NULL;
 
 //** Prototypes
-void sopen(std::istream&,std::string);
-void sopen(std::ostream&,std::string);
+bool sopen(std::istream&,std::string);
+bool sopen(std::ostream&,std::string);
 void sclose(std::istream&);
 void sclose(std::ostream&);
 
 //** Definitions
-void sopen(std::istream &is, std::string fn) {
+bool sopen(std::istream &is, std::string fn) {
     if (ifs != NULL) {
         std::cerr << "Close streams before opening more" << std::endl;
-        return;
+        return false;
     } else {
         ifs = new std::fstream(fn,std::fstream::in);
 
@@ -27,18 +27,20 @@ void sopen(std::istream &is, std::string fn) {
         if (ifs -> is_open()) {
             inbuf = is.rdbuf();
             is.rdbuf(ifs -> rdbuf());
+            return true;
         } else {
             delete ifs;
             ifs = NULL;
             std::cerr << "Failed to open file!" << std::endl;
+            return false;
         }
     }
 }
 
-void sopen(std::ostream &os, std::string fn) {
+bool sopen(std::ostream &os, std::string fn) {
     if (ofs != NULL) {
         std::cerr << "Close streams before opening more" << std::endl;
-        return;
+        return false;
     } else {
         ofs = new std::fstream(fn,std::fstream::out);
 
@@ -46,10 +48,12 @@ void sopen(std::ostream &os, std::string fn) {
         if (ofs -> is_open()) {
             outbuf = os.rdbuf();
             os.rdbuf(ofs -> rdbuf());
+            return true;
         } else {
             delete ofs;
             ofs = NULL;
             std::cerr << "Failed to open file!" << std::endl;
+            return false;
         }
     }
 }
