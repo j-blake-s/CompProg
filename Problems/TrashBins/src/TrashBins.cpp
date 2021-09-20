@@ -25,12 +25,37 @@ int main() {
         int sum = 0;
 
         /*
-            > Solution Detail
+            > General Description
+
+                $ We want to find the total amount of "steps" that every house owner needs to walk.
+                $ It should be noted that any house owner who owns a trashbin, whom we denote with a 1,
+                $ does not have to walk any steps and thus has a value of 0. This means that instead
+                $ of finding the value of all house owners, we should only need to find the values of
+                $ those without trashbins, whom we denote with 0s. 
+
+
+                $ We can think of the house owners as a series of 1s and 0s which form a string.
+                $ This is coincidentally the same description of the string parameter which is given
+                $ to use in each test case. It will look like:
+
+                            : 10001001010011010...
+
+                $ Let's first evaluate some cases to simplfy the problem. The first case is if there
+                $ is exactly 1 houseowner with a trashbin. The string would look like:
+
+                            : 0.......1......0
+                        
+                $ This case is easy evaulate since the number of steps that everyone else has to walk is just
+                $ their distance from the 1.
+
+                $ NEED TO WRITE
+                
+            > Solution Proof
 
                 & (1) For any string 10......01, the sum of its values is 2 * summation(i=1,i=n/2){i * i+1 / 2} where n is the number of 0s
                         ? For odd values of n, add (1 + n/2)
                 & (2.1) For any string 0....01, the sum of its values is n * 1+n / 2 where n is the number of 0s
-                & (2.2) For any string 10...0, (2.1) holds true.
+                & (2.2) For any string 10...0, (2.1) holds true. 
 
                 !_Proof
 
