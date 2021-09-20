@@ -1,6 +1,6 @@
 # Ignore
 .vscode
 *.exe
-
+*.out
 
 # Don't Ignore
